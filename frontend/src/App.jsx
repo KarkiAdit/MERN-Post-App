@@ -61,8 +61,8 @@ function App() {
     <div className='react-app-component text-center'>
       <div className="container">
         <div className="row justify-content-md-center">
-          <div className="col-6">
-            <div className="card">
+          <div className="col-10">
+            <div className="card input-card">
               <div className="card-body">
                 <div className="mb-3">
                   <label className="form-label">Enter your post</label>
@@ -73,8 +73,10 @@ function App() {
                 </div>
               </div>
             </div>
+
+            <div className="body-cards">
               {posts.map((post) => {
-                return (<div className="card text-white bg-dark my-3 text-start">
+                return (<div className="card text-white bg-dark my-3 text-start added-card">
                   <div className="card-body">
                     <h6 className="card-subtitle mb-2 text-muted">{evaluateDateAndTime(post.createdAt)}</h6>
                     <p className="card-text">{post.content}</p>
@@ -83,6 +85,7 @@ function App() {
                     </div>)
               })
             }
+            </div>
           </div>
         </div>
       </div>
