@@ -12,7 +12,6 @@ function App() {
 
   const handlePostButton = async (event) => {
     if (post){
-      // event.preventDefault();
       const response = await fetch("http://127.0.0.1:8081/posts", {
         method: "POST",
         body: JSON.stringify({content: post}),
@@ -52,7 +51,7 @@ function App() {
     const fetchApi = async () => {
       const response = await fetch("http://127.0.0.1:8081/posts");
       const allFields = await response.json();
-      setPosts(allFields.data);
+      setPosts(allFields.data.reverse());
     };
     fetchApi();
   }, [newPostAdded]);
