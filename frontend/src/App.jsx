@@ -12,7 +12,7 @@ function App() {
 
   const handlePostButton = async (event) => {
     event.preventDefault();;
-    const response = await fetch("http://127.0.0.1:8081/save", {
+    const response = await fetch("http://127.0.0.1:8081/posts", {
       method: "POST",
       body: JSON.stringify({content: post}),
       headers: { "Content-Type": "application/json" },
@@ -28,7 +28,7 @@ function App() {
   };
 
   const handleDeleteButton = async (id) => {
-    const response = await fetch(`http://localhost:8081/posts${id}`, {
+    const response = await fetch(`http://localhost:8081/posts/${id}`, {
       method: "DELETE",
       headers: { "Content-Type": "application/json" },
     });
@@ -43,8 +43,8 @@ function App() {
   useEffect(() => {
     const fetchApi = async () => {
       const response = await fetch("http://127.0.0.1:8081/posts");
-      const allPosts = await response.json();
-      setPosts(allPosts);
+      const allFields = await response.json();
+      setPosts(allFields.data);
     };
     fetchApi();
   }, [newPostAdded]);
@@ -65,15 +65,15 @@ function App() {
                 </div>
               </div>
             </div>
-              {/* {posts.map((post) => {
+              {posts.map((post) => {
                 return (<div className="card text-white bg-dark my-3 text-start">
                   <div className="card-body">
-                    <h6 className="card-subtitle mb-2 text-muted">{post.data.date}</h6>
-                    <p className="card-text">{post.data.content}</p>
-                    <button className="card-link" onClick={() => handleDeleteButton(post.data._id)}>Delete</button>
+                    <h6 className="card-subtitle mb-2 text-muted">{post.date}</h6>
+                    <p className="card-text">{post.content}</p>
+                    <button className="card-link" onClick={() => handleDeleteButton(post._id)}>Delete</button>
                     </div>
                     </div>)
-              }) */}
+              })
             }
           </div>
         </div>
