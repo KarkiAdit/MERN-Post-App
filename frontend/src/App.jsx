@@ -17,7 +17,6 @@ function App() {
         body: JSON.stringify({content: post}),
         headers: { "Content-Type": "application/json" },
       });
-      console.log(response)
 
       // Update posts based upon the status code
       const responseJson = await response.json();
@@ -35,7 +34,7 @@ function App() {
       headers: { "Content-Type": "application/json" },
     });
 
-    // Update posts based upon the status code
+    // Delete posts based upon the status code
     const responseJson = await response.json();
     if (responseJson.status === 200) {
       setnewPostAdded(!newPostAdded);
